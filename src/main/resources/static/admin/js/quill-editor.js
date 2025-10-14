@@ -36,4 +36,11 @@
         theme: 'bubble'
     });
 
+    const quill3 = new Quill('#editor2', {
+        modules: {
+            toolbar: toolbarOptions
+        },
+        theme: 'snow'
+    });
+
 })();

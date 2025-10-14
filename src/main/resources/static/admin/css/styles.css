@@ -24669,3 +24669,21 @@ a.link-underline-dark {
 .focus-ring.focus-ring-dark:focus {
   --bs-focus-ring-color: rgba(var(--dark-rgb), var(--bs-focus-ring-opacity));
 }
+
+.required-input::after {
+  content: " *";
+  color: #ff0000;
+  font-weight: 600;
+  font-size: 14px;
+  margin-left: 2px;
+}
+
+.pagination .page-link {
+  border-radius: 0.5rem;
+  margin: 0 3px;
+  color: #198754;
+}
+.pagination .page-item.active .page-link {
+  background-color: #198754;
+  border-color: #198754;
+}

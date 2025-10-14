@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{admin/component/_layout}" lang="en">
+<head>
+    <title>Trang chủ</title>
+</head>
+
+<body>
+<!-- Apex Charts JS -->
+<script th:src="@{/admin/libs/apexcharts/apexcharts.min.js}"></script>
+<!-- Internal Apex-Column-Charts JS -->
+<script th:src="@{/admin/js/apexcharts-column.js}"></script>
+
+<section layout:fragment="content">
+    <!-- Start:: row-1 -->
+    <div class="row">
+        <div class="col-xl-6">
+            <div class="card custom-card">
+                <!-- <div class="card-header justify-content-between">
+                    <div class="card-title">
+                        Vertical Forms
+                    </div>
+                </div> -->
+                <div class="card-body">
+                    <div class="mb-3">
+                        <label for="form-text" class="form-label fs-14 text-dark required-input">Tên sản phẩm</label>
+                        <input type="text" class="form-control" id="form-text" placeholder="">
+                    </div>
+                    <div class="mb-3">
+                        <label for="form-text" class="form-label fs-14 text-dark required-input">Thương hiệu</label>
+                        <input type="text" class="form-control" id="form-text" placeholder="">
+                    </div>
+                    <div class="mb-3">
+                        <label for="form-password" class="form-label fs-14 text-dark required-input">Danh mục</label>
+                        <select class="form-control" name="choices-single-no-search" id="choices-single-no-search">
+                            <option value="0">-- Chọn danh mục sản phẩm --</option>
+                            <option value="">-- Chọn danh mục sản phẩm --</option>
+                            <option value="luong-thuc">Lương thực</option>
+                            <option value="rau-cu-qua">Rau củ quả</option>
+                            <option value="trai-cay">Trái cây</option>
+                            <option value="cay-cong-nghiep">Cây công nghiệp</option>
+                            <option value="chan-nuoi">Chăn nuôi</option>
+                            <option value="thuy-san">Thủy sản</option>
+                            <option value="duoc-lieu">Dược liệu & Thảo mộc</option>
+                            <option value="che-bien">Sản phẩm chế biến</option>
+                            <option value="huu-co">Nông sản hữu cơ / OCOP</option>
+                            <option value="dac-san">Đặc sản vùng miền</option>
+                        </select>
+                    </div>
+                    <div class="mb-3 row">
+                        <div class="col-5">
+                            <label for="form-password" class="form-label fs-14 text-dark required-input">SKU/Mã vạch</label>
+                            <input type="text" class="form-control" id="form-password" value="">
+                        </div>
+                        <div class="col-7">
+                            <label for="form-password" class="form-label fs-14 text-dark required-input">Đơn vị tính (kg, gói, thùng,...)</label>
+                            <input type="text" class="form-control" id="form-password2" value="">
+                        </div>
+
+                    </div>
+                    <div class="row mb-3">
+                        <label
+                               class="col-sm-12 col-form-label required-input">Mô tả</label>
+                        <div class="col-sm-12">
+                            <textarea class="form-control" rows="7" ></textarea>
+                        </div>
+                    </div>
+                    <button class="btn btn-primary" type="submit">Lưu</button>
+                    <button class="btn btn-danger" type="submit">Quay lại</button>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-6">
+            <div class="card custom-card">
+                <div class="card-header">
+                    <div class="card-title required-input">
+                        Thêm ảnh sản phẩm
+                    </div>
+                </div>
+                <div class="card-body">
+                    <input type="file" class="multiple-filepond" name="filepond" multiple data-allow-reorder="true" data-max-file-size="3MB" data-max-files="6">
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    <!-- End:: row-1 -->
+    <!-- Start:: row-2 -->
+    <div class="row" style="display: none;">
+        <div class="col-xl-12">
+            <div class="card custom-card">
+                <div class="card-header">
+                    <div class="card-title">
+                        Dropzone
+                    </div>
+                </div>
+                <div class="card-body">
+                    <form data-single="true" method="post" action="https://httpbin.org/post" class="dropzone"></form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End:: row-2 -->
+</section>
+
+<div layout:fragment="scripts">
+    <script>
+        var chart = new ApexCharts(document.querySelector("#chart"), { ... });
+        chart.render();
+    </script>
+</div>
+</body>
+</html>

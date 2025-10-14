@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{admin/component/_layout}" lang="en">
+<head>
+    <title>Trang chủ</title>
+</head>
+
+<body>
+
+<th:block layout:fragment="content">
+    <!-- Start::page-header -->
+    <div class="page-header-breadcrumb mb-3">
+        <div class="d-flex align-center justify-content-between flex-wrap">
+            <h1 class="page-title fw-medium fs-18 mb-0">Danh sách sản phẩm</h1>
+        </div>
+    </div>
+    <!-- End::page-header -->
+
+    <!-- Start:: row-1 -->
+    <div class="row">
+        <div class="col-xl-12">
+            <div class="card-body">
+                <!-- Thanh tìm kiếm + bộ lọc -->
+                <div class="d-flex justify-content-between mb-3">
+                    <div class="d-flex">
+                        <input type="text" id="searchInput" class="form-control me-2"
+                               placeholder="Tìm kiếm sản phẩm...">
+                        <select id="statusFilter" class="form-select">
+                            <option value="">Tất cả trạng thái</option>
+                            <option value="Còn hàng">Còn hàng</option>
+                            <option value="Hết hàng">Hết hàng</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="d-grid gap-2 d-md-flex justify-content-md-end mb-3">
+                    <button class="btn btn-light btn-wave" type="button">Làm mới</button>
+                    <button class="btn btn-primary btn-wave" type="button">Tìm kiếm</button>
+                </div>
+                <div class="table-responsive">
+                    <table class="table table-hover align-middle">
+                        <thead class="table-light text-center">
+                        <tr>
+                            <th scope="col" style="width: 5%;">#</th>
+                            <th scope="col" style="width: 20%;">Tên sản phẩm</th>
+                            <th scope="col" style="width: 10%;">Mã sản phẩm</th>
+                            <th scope="col" style="width: 15%;">Danh mục</th>
+                            <th scope="col" style="width: 10%;">Đơn vị</th>
+                            <th scope="col" style="width: 10%;">Trạng thái</th>
+                            <th scope="col" class="text-center" style="width: auto;">Hành động</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td class="text-center">1</td>
+                            <td class="text-center">
+                                <div class="d-flex align-items-center">
+                                    <img src="https://cdn-icons-png.flaticon.com/512/415/415682.png"
+                                         alt="Xoài Cát Hòa Lộc" class="rounded-circle me-2" width="40" height="40">
+                                    <span>Xoài Cát Hòa Lộc</span>
+                                </div>
+                            </td>
+                            <td class="text-center">SP001</td>
+                            <td class="text-center">Trái cây</td>
+                            <td class="text-center">Kg</td>
+                            <td class="text-center">
+                                <span class="badge bg-success">Còn hàng</span>
+                            </td>
+                            <td class="text-center">
+                                <button class="btn btn-sm btn-outline-primary me-1">
+                                    <i class="bi bi-eye"></i> Chi tiết
+                                </button>
+                                <button class="btn btn-sm btn-outline-warning me-1">
+                                    <i class="bi bi-pencil"></i> Sửa
+                                </button>
+                                <button class="btn btn-sm btn-outline-danger">
+                                    <i class="bi bi-trash"></i> Xóa
+                                </button>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td class="text-center">2</td>
+                            <td class="text-center">
+                                <div class="d-flex align-items-center">
+                                    <img src="https://cdn-icons-png.flaticon.com/512/415/415733.png"
+                                         alt="Gạo ST25" class="rounded-circle me-2" width="40" height="40">
+                                    <span>Gạo ST25</span>
+                                </div>
+                            </td>
+                            <td class="text-center">SP002</td>
+                            <td class="text-center">Ngũ cốc</td>
+                            <td class="text-center">Kg</td>
+                            <td class="text-center">
+                                <span class="badge bg-secondary">Hết hàng</span>
+                            </td>
+                            <td class="text-center">
+                                <button class="btn btn-sm btn-outline-primary me-1">
+                                    <i class="bi bi-eye"></i> Chi tiết
+                                </button>
+                                <button class="btn btn-sm btn-outline-warning me-1">
+                                    <i class="bi bi-pencil"></i> Sửa
+                                </button>
+                                <button class="btn btn-sm btn-outline-danger">
+                                    <i class="bi bi-trash"></i> Xóa
+                                </button>
+                            </td>
+                        </tr>
+                        <!-- Dữ liệu Thymeleaf -->
+                        <tr th:each="sp, i : ${listSanPham}">
+                            <td th:text="${i.index + 1}"></td>
+
+                            <td>
+                                <img th:src="@{${sp.imageUrl}}" alt="Ảnh sản phẩm"
+                                     class="rounded" width="60" height="60"
+                                     style="object-fit: cover;">
+                            </td>
+
+                            <td th:text="${sp.tenSanPham}"></td>
+                            <td th:text="${sp.danhMuc.tenDanhMuc}"></td>
+                            <td th:text="${sp.donViTinh}"></td>
+                            <td>
+                                <span th:text="${#numbers.formatDecimal(sp.giaBan, 0, 'COMMA', 0, 'POINT')} + ' ₫'"></span>
+                            </td>
+                            <td th:text="${#temporals.format(sp.ngayTao, 'dd/MM/yyyy')}"></td>
+
+                            <td>
+                                <span th:if="${sp.trangThai == 'ACTIVE'}" class="badge bg-success">Còn hàng</span>
+                                <span th:if="${sp.trangThai != 'ACTIVE'}" class="badge bg-danger">Hết hàng</span>
+                            </td>
+
+                            <td class="text-center">
+                                <a th:href="@{/admin/product/edit/{id}(id=${sp.id})}"
+                                   class="btn btn-sm btn-outline-primary me-1">
+                                    <i class="bi bi-pencil"></i>
+                                </a>
+                                <a th:href="@{/admin/product/detail/{id}(id=${sp.id})}"
+                                   class="btn btn-sm btn-outline-info me-1">
+                                    <i class="bi bi-eye"></i>
+                                </a>
+                                <button class="btn btn-sm btn-outline-danger"
+                                        th:onclick="'confirmDelete(' + ${sp.id} + ')'">
+                                    <i class="bi bi-trash"></i>
+                                </button>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <!-- Phân trang -->
+            <div class="d-flex justify-content-between align-items-center mt-3 mb-3">
+                <div class="text-muted small">
+                    Trang <strong>1</strong> / <strong>10</strong>
+                </div>
+                <nav>
+                    <ul class="pagination mb-0">
+                        <li class="page-item disabled">
+                            <a class="page-link" href="#" aria-label="Previous">
+                                <span aria-hidden="true">&laquo;</span>
+                            </a>
+                        </li>
+                        <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                        <li class="page-item"><a class="page-link" href="#">2</a></li>
+                        <li class="page-item"><a class="page-link" href="#">3</a></li>
+                        <li class="page-item">
+                            <a class="page-link" href="#" aria-label="Next">
+                                <span aria-hidden="true">&raquo;</span>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+    <!-- End:: row-1 -->
+</th:block>
+<div layout:fragment="scripts">
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const rowsPerPage = 5;
+            const tableBody = document.getElementById("tableBody");
+            const rows = Array.from(tableBody.querySelectorAll("tr"));
+            const pagination = document.getElementById("pagination");
+            const searchInput = document.getElementById("searchInput");
+            const statusFilter = document.getElementById("statusFilter");
+
+            function renderTable() {
+                const searchTerm = searchInput.value.toLowerCase();
+                const status = statusFilter.value;
+                const filteredRows = rows.filter(row => {
+                    const text = row.innerText.toLowerCase();
+                    const matchesSearch = text.includes(searchTerm);
+                    const matchesStatus = !status || row.innerText.includes(status);
+                    return matchesSearch && matchesStatus;
+                });
+                paginate(filteredRows);
+            }
+
+            function paginate(filteredRows) {
+                pagination.innerHTML = "";
+                const pageCount = Math.ceil(filteredRows.length / rowsPerPage);
+                let currentPage = 1;
+
+                function showPage(page) {
+                    tableBody.innerHTML = "";
+                    const start = (page - 1) * rowsPerPage;
+                    const end = start + rowsPerPage;
+                    filteredRows.slice(start, end).forEach(r => tableBody.appendChild(r));
+
+                    pagination.innerHTML = "";
+                    for (let i = 1; i <= pageCount; i++) {
+                        const li = document.createElement("li");
+                        li.className = "page-item" + (i === page ? " active" : "");
+                        li.innerHTML = `<a class="page-link" href="#">${i}</a>`;
+                        li.addEventListener("click", (e) => {
+                            e.preventDefault();
+                            showPage(i);
+                        });
+                        pagination.appendChild(li);
+                    }
+                }
+
+                showPage(currentPage);
+            }
+
+            searchInput.addEventListener("keyup", renderTable);
+            statusFilter.addEventListener("change", renderTable);
+            renderTable();
+        });
+    </script>
+</div>
+</body>
+</html>

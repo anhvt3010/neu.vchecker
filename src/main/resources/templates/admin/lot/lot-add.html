@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{admin/component/_layout}" lang="en">
+<head>
+    <title>Tạo mới lô sản xuất</title>
+</head>
+
+<body>
+
+<th:block layout:fragment="content">
+    <!-- Start::page-header -->
+    <div class="page-header-breadcrumb mb-3">
+        <div class="d-flex align-center justify-content-between flex-wrap">
+            <h1 class="page-title fw-medium fs-18 mb-0">Tạo mới lô sản xuất</h1>
+            <ol class="breadcrumb mb-0">
+                <!-- <li class="breadcrumb-item"><a href="javascript:void(0);">Forms</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Form Layouts</li> -->
+            </ol>
+        </div>
+    </div>
+    <!-- End::page-header -->
+
+    <!-- Start:: row-1 -->
+    <div class="row">
+        <div class="col-xl-6">
+            <div class="card custom-card">
+                <div class="card-header justify-content-between">
+                    <div class="card-title" style="color: red; font-size: 24px;">
+                        Thông tin chung
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="mb-3 row">
+                        <div class="col-7">
+                            <label for="form-text" class="form-label fs-14 text-dark required-input">Tên lô sản xuất</label>
+                            <input type="text" class="form-control" id="form-text" value="">
+                        </div>
+                        <div class="col-5">
+                            <label for="form-password" class="form-label fs-14 text-dark required-input">Mã lô</label>
+                            <input type="number" class="form-control" id="form-password" value="">
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="form-password" class="form-label fs-14 text-dark required-input">Sản phẩm của lô</label>
+                        <select class="form-control" name="choices-single-no-search" id="choices-single-no-search">
+                            <option value="0">-- Chọn sản phẩm --</option>
+                            <option value="luong-thuc">Lương thực</option>
+                            <option value="rau-cu-qua">Rau củ quả</option>
+                            <option value="trai-cay">Trái cây</option>
+                            <option value="cay-cong-nghiep">Cây công nghiệp</option>
+                            <option value="chan-nuoi">Chăn nuôi</option>
+                            <option value="thuy-san">Thủy sản</option>
+                            <option value="duoc-lieu">Dược liệu & Thảo mộc</option>
+                            <option value="che-bien">Sản phẩm chế biến</option>
+                            <option value="huu-co">Nông sản hữu cơ / OCOP</option>
+                            <option value="dac-san">Đặc sản vùng miền</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="form-password" class="form-label fs-14 text-dark required-input">Hộ/điểm sản xuất</label>
+                        <select class="form-control" name="choices-single-no-search" id="choices-single-no-search">
+                            <option value="0">-- Chọn hộ/điểm sản xuất --</option>
+                            <option value="luong-thuc">Lương thực</option>
+                            <option value="rau-cu-qua">Rau củ quả</option>
+                            <option value="trai-cay">Trái cây</option>
+                            <option value="cay-cong-nghiep">Cây công nghiệp</option>
+                            <option value="chan-nuoi">Chăn nuôi</option>
+                            <option value="thuy-san">Thủy sản</option>
+                            <option value="duoc-lieu">Dược liệu & Thảo mộc</option>
+                            <option value="che-bien">Sản phẩm chế biến</option>
+                            <option value="huu-co">Nông sản hữu cơ / OCOP</option>
+                            <option value="dac-san">Đặc sản vùng miền</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="form-password" class="form-label fs-14 text-dark required-input">Khu vực sản xuất</label>
+                        <select class="form-control" name="choices-single-no-search" id="choices-single-no-search">
+                            <option value="0">-- Chọn Khu vực sản xuất --</option>
+                            <option value="luong-thuc">Lương thực</option>
+                            <option value="rau-cu-qua">Rau củ quả</option>
+                            <option value="trai-cay">Trái cây</option>
+                            <option value="cay-cong-nghiep">Cây công nghiệp</option>
+                            <option value="chan-nuoi">Chăn nuôi</option>
+                            <option value="thuy-san">Thủy sản</option>
+                            <option value="duoc-lieu">Dược liệu & Thảo mộc</option>
+                            <option value="che-bien">Sản phẩm chế biến</option>
+                            <option value="huu-co">Nông sản hữu cơ / OCOP</option>
+                            <option value="dac-san">Đặc sản vùng miền</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="form-password" class="form-label fs-14 text-dark required-input">Mùa vụ</label>
+                        <select class="form-control" name="choices-single-no-search" id="choices-single-no-search">
+                            <option value="0">-- Chọn mùa vụ --</option>
+                            <option value="luong-thuc">Vụ Hè Thu 2025</option>
+                            <option value="luong-thuc">Vụ Thu Đông 2025</option>
+                            <option value="luong-thuc">Vụ Đông Xuân 2025 - 2026</option>
+                        </select>
+                    </div>
+                    <div class="mb-3 row">
+                        <div class="col-4">
+                            <label for="form-text" class="form-label fs-14 text-dark required-input">Ngày bắt đầu sản xuất / gieo trồng</label>
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <div class="input-group-text text-muted"> <i class="ri-calendar-line"></i> </div>
+                                    <input type="text" class="form-control" id="date" placeholder="Chọn thời gian">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <label for="form-password" class="form-label fs-14 text-dark required-input">Ước tính ngày thu hoạch / hoàn thành</label>
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <div class="input-group-text text-muted"> <i class="ri-calendar-line"></i> </div>
+                                    <input type="text" class="form-control" id="date" placeholder="Chọn thời gian">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <label for="form-password" class="form-label fs-14 text-dark required-input">Ngày thu hoạch/ hoàn thành thực tế</label>
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <div class="input-group-text text-muted"> <i class="ri-calendar-line"></i> </div>
+                                    <input type="text" class="form-control" id="date" placeholder="Chọn thời gian">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="form-password" class="form-label fs-14 text-dark required-input">Diện tích sản xuất/ gieo trồng</label>
+                        <input type="number" class="form-control" id="form-password" value="">
+                    </div>
+                    <div class="mb-3 row">
+                        <div class="col-6">
+                            <label for="form-password" class="form-label fs-14 text-dark required-input">Dự kiến sản lượng</label>
+                            <input type="number" class="form-control" id="form-password" value="">
+                        </div>
+                        <div class="col-6">
+                            <label for="form-password" class="form-label fs-14 text-dark required-input">Sản lượng thực tế</label>
+                            <input type="number" class="form-control" id="form-password" value="">
+                        </div>
+                    </div>
+                </div>
+                <hr>
+                <div class="card-header justify-content-between">
+                    <div class="card-title" style="color: red; font-size: 24px;">
+                        QR Code & công khai truy xuất
+                    </div>
+                </div>
+                <div class="card-body row">
+                    <div class="col-9">
+                        <div class="mb-3">
+                            <label for="form-password" class="form-label fs-14 text-dark">Mã hash Blockchain</label>
+                            <input type="number" class="form-control" id="form-password" value="">
+                        </div>
+                        <div class="mb-3">
+                            <label for="form-password" class="form-label fs-14 text-dark">Trạng thái hiển thị công khai</label>
+                            <input type="number" class="form-control" id="form-password" value="">
+                        </div>
+                    </div>
+                    <div class="col-3">
+                        <div class="mb-3 text-center">
+                            <img src="https://placehold.co/200" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-6">
+            <div class="card custom-card">
+                <div class="card-header justify-content-between">
+                    <div class="card-title" style="color: red; font-size: 24px;">
+                        Thông tin quy trình sản xuất
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="mb-3">
+                        <label for="form-password" class="form-label fs-14 text-dark">Giống / Loại cây trồng / vật nuôi</label>
+                        <input type="number" class="form-control" id="form-password" value="">
+                    </div>
+                    <div class="mb-3">
+                        <label for="form-password" class="form-label fs-14 text-dark">Nguồn giống / vật tư đầu vào</label>
+                        <input type="number" class="form-control" id="form-password" value="">
+                    </div>
+                    <div class="mb-3">
+                        <label for="form-password" class="form-label fs-14 text-dark">Điều kiện môi trường / ghi chú sản xuất</label>
+                        <div id="editor" >
+                            <h4><b class="ql-size-large">Quill Snow</b> is a free, open source <a href="https://github.com/quilljs/quill/" target="_blank">Quill Editor</a> built for the modern web. With its <a href="https://quilljs.com/docs/modules/" target="_blank">modular architecture</a> and expressive API, it is completely customizable to fit any need.</h4>
+                            <p><br></p>
+                            <ol>
+                                <li class="ql-size-normal">Write text select and edit with multiple options.</li>
+                                <li class="">This is quill snow editor.</li>
+                                <li class="">Easy to customize and flexible.</li>
+                            </ol>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="form-password" class="form-label fs-14 text-dark">Công nghệ / thiết bị sử dụng</label>
+                        <div id="editor2" >
+                            <h4><b class="ql-size-large">Quill Snow</b> is a free, open source <a href="https://github.com/quilljs/quill/" target="_blank">Quill Editor</a> built for the modern web. With its <a href="https://quilljs.com/docs/modules/" target="_blank">modular architecture</a> and expressive API, it is completely customizable to fit any need.</h4>
+                            <p><br></p>
+                            <ol>
+                                <li class="ql-size-normal">Write text select and edit with multiple options.</li>
+                                <li class="">This is quill snow editor.</li>
+                                <li class="">Easy to customize and flexible.</li>
+                            </ol>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="form-password" class="form-label fs-14 text-dark">Tiêu chuẩn / chứng nhận áp dụng</label>
+                        <input type="number" class="form-control" id="form-password" value="">
+                    </div>
+                    <div class="mb-3">
+                        <!-- <label for="form-password" class="form-label fs-14 text-dark">Tệp chứng nhận / kiểm định</label>
+                        <input type="number" class="form-control" id="form-password" value=""> -->
+                        <div class="card custom-card">
+                            <div class="card-header">
+                                <div class="card-title required-input">
+                                    Tệp chứng nhận / kiểm định
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <input type="file" class="multiple-filepond" name="filepond" multiple data-allow-reorder="true" data-max-file-size="3MB" data-max-files="6">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mb-3 row">
+                        <div class="col-6">
+                            <label for="form-password" class="form-label fs-14 text-dark">Người phụ trách sản xuất</label>
+                            <input type="number" class="form-control" id="form-password" value="">
+                        </div>
+                        <div class="col-6">
+                            <label for="form-password" class="form-label fs-14 text-dark">Liên hệ / số điện thoại</label>
+                            <input type="number" class="form-control" id="form-password" value="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-6 mb-3">
+            <button class="btn btn-primary" type="submit">Lưu</button>
+            <button class="btn btn-danger" type="submit">Quay lại</button></div>
+    </div>
+    <!-- End:: row-1 -->
+</th:block>
+</body>
+</html>
